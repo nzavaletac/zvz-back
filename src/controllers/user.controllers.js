@@ -9,6 +9,7 @@ exports.register = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.SECRET, {
       expiresIn: 60 * 60 * 21 * 365,
     });
+    res.status(201).json({ token, user });
   } catch (e) {
     res.status(400).json({ error: e.message });
   }
