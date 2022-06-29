@@ -4,6 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const { connect } = require("./database");
 const userRouter = require("./routes/user.routes");
+const postRouter = require("./routes/post.routes");
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/admin", userRouter);
+app.use("/post", postRouter);
 
 app.listen(port, () => {
   console.log(`App running at http://localhost:${port}`);

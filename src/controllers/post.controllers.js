@@ -23,7 +23,7 @@ exports.getPost = async (req, res) => {
 exports.getPostXId = async (req, res) => {
   const { postId } = req.params;
   try {
-    const post = await (await Post.findById({ _id: postId })).populated("_id");
+    const post = await (await Post.findById({ _id: postId })).populate("_id");
     res.status(200).json({ message: "Post found!", post });
   } catch (e) {
     res

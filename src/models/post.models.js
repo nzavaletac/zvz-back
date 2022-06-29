@@ -13,7 +13,7 @@ const postSchema = new Schema({
   description: {
     type: String,
   },
-  markdowon: {
+  markdown: {
     type: String,
     required: true,
   },
@@ -33,11 +33,11 @@ const postSchema = new Schema({
 });
 
 postSchema.pre("validate", function (next) {
-  if (this.tile) {
+  if (this.title) {
     this.slug = slugify(this.title, { lower: true, strict: true });
   }
-  if (this.markdowon) {
-    this.sanitizedHtml = dompurify.sanitize(marked(this.markdowon));
+  if (this.markdown) {
+    this.sanitizedHtml = dompurify.sanitize(marked(this.markdown));
   }
   next();
 });
