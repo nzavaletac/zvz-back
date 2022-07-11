@@ -13,7 +13,7 @@ exports.createPost = async (req, res) => {
 exports.getPost = async (req, res) => {
   try {
     Post.find().then((Posts) => {
-      res.status(200).json({ posts: Posts });
+      res.status(200).json({ posts: Posts.sort() });
     });
   } catch (e) {
     res.status(500).json({ message: "Something went wrong!" });
